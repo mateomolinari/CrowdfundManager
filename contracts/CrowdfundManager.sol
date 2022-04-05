@@ -89,7 +89,7 @@ contract CrowdfundManager {
         require(
             campaign.startAt <= block.timestamp &&
                 campaign.endAt > block.timestamp,
-            "inval_id time"
+            "invalid time"
         );
         campaign.status = Status.ONGOING;
 
