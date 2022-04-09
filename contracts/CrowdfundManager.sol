@@ -43,6 +43,7 @@ contract CrowdfundManager {
 
     constructor(address[] memory _moderators) {
         admin = msg.sender;
+        moderators[admin] = true;
         uint256 length = _moderators.length;
         for (uint256 i; i < length; ) {
             moderators[_moderators[i]] = true;
@@ -161,10 +162,6 @@ contract CrowdfundManager {
         external
         onlyAdmin
     {
-        if (_operation) {
-            moderators[_moderator] = true;
-        } else {
-            delete moderators[_moderator];
-        }
+        moderators[_moderator] = _operation;
     }
 }
